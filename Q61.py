@@ -23,3 +23,7 @@ class Solution(object):
         result=point.next
         point.next=None
         return result
+'''
+解题思路:
+先遍历整个链表获得链表长度n，然后此时把链表头和尾链接起来，在往后走n+1-k%(n+1)个节点就到达新链表的头结点前一个点，这时断开链表即可。
+'''

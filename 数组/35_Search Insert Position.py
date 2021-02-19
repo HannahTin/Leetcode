@@ -18,6 +18,17 @@ def searchInsert(nums, target):
         :type target: int
         :rtype: int
         """
+        # 暴力
+        for i in range(len(nums)):
+            # 分别处理如下三种情况
+            # 目标值在数组所有元素之前
+            # 目标值等于数组中某一个元素  
+            # 目标值插入数组中的位置 
+            if nums[i] >= target:
+                return i
+        # 如果target是最大的，或者 nums为空，则返回nums的长度
+        return nums.size()
+        """
         # 左闭右开
         left = 0
         right = len(nums)
@@ -35,7 +46,7 @@ def searchInsert(nums, target):
         # 目标值插入数组中的位置 [left, right) ，return right 即可
         # 目标值在数组所有元素之后的情况 [left, right)，return right 即可
         return right
-
+        """
         """
         # 左闭右闭
         left = 0

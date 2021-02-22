@@ -14,6 +14,7 @@ class CQueue:
         self.stack1.append(value)
 
 #    设置stack1存储进来的元素，stack2用于将stack1元素反转，栈顶输出的就是要删除的
+#    Python中栈可用list实现，进栈append，出栈pop()
     def deleteHead(self) -> int:
         if self.stack2:
            return self.stack2.pop()
@@ -34,3 +35,5 @@ param_1 = obj.deleteHead()
 print(param_1)
 param_2 = obj.deleteHead()
 print(param_2)
+param_3 = obj.deleteHead()
+print(param_3)

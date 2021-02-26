@@ -12,31 +12,22 @@
 // 这里考虑快速幂的方法,时间复杂度为O(logn)，其中用右移1表示/2，用位与判断奇偶数
 // 本题还要尤其注意特殊值的处理。0的负指数幂，0的0次幂
 
-
 #include <iostream>
 using namespace std;
-
-double Pow(double x,int n){
-    if (n==0) return 1;
-    if (n==1) return x;
-    double res =Pow(x,n>>1);
-    res *=res;
-    if((n & 1) == 1){
-        res*=x;
-    }
-    return res;
-}
-
 double myPow(double x, int n) {
-        if(x ==0) return 0; // 异常处理
-        double res=1.0;
-        if(n<0){
-            res = 1/Pow(x,-n);
+    if(x==0) return 0;
+    double res=1.0;
+    long b=n; //防止n太大太小而溢出
+    if(b<0){
+        x=1.0/x;
+        b=-b;
+    }
+    for(;b>0;x*=x,b>>=1){
+        if((b&1)==1){
+            res *= x;
         }
-        else if(n>0){
-            res = Pow(x,n);
-        }
-        return res;
+    }      
+    return res;
 }
 
 int main() {

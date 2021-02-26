@@ -28,7 +28,7 @@ double Pow(double x,int n){
 }
 
 double myPow(double x, int n) {
-        if(x ==0) return 0;
+        if(x ==0) return 0; // 异常处理
         double res=1.0;
         if(n<0){
             res = 1/Pow(x,-n);

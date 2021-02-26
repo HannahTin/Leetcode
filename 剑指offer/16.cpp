@@ -17,7 +17,7 @@ using namespace std;
 double myPow(double x, int n) {
     if(x==0) return 0;
     double res=1.0;
-    long b=n; //防止n太大太小而溢出
+    long b=n; //防止n绝对值太大而溢出
     if(b<0){
         x=1.0/x;
         b=-b;

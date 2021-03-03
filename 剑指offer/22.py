@@ -14,8 +14,8 @@
 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
 '''
 # 总结：第一时间想到的解法：
-# 先遍历统计链表长度，记为 nn ；
-# 设置一个指针走 (n-k)(n−k) 步，即可找到链表倒数第 kk 个节点。
+# 先遍历统计链表长度，记为 n ；
+# 设置一个指针走 (n-k)步，即可找到链表倒数第 k个节点。
 # 使用双指针则可以不用统计链表长度。
 
 class ListNode:
@@ -24,10 +24,14 @@ class ListNode:
         self.next =None
 
 def getKthFromEnd(self, head: ListNode, k: int) -> ListNode:
+    if not head or k==0 : return None # 输入指针为空指针或k=0
     first = head
     last = head
     for _ in range(k):
+        if last.next != None: 
             last = last.next
+        else:
+            return None # 如果节点总数少于k
     while(last):
         last=last.next
         first = first.next

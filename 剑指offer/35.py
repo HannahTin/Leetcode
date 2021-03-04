@@ -16,22 +16,23 @@ class Node:
 # 时间复杂度 O(N)： 两轮遍历链表，使用 O(N) 时间。
 '''
 def copyRandomList(head: 'Node') -> 'Node':
-    if not head: return None
-    dum = pre = Node(0)
-    curr = head
+    if not head: return
     dic = {}
     # 3. 复制各节点，并建立 “原节点 -> 新节点” 的 Map 映射
-    while(curr):
-        dic[curr]=Node(curr.val)
-        curr = curr.next
-    curr = head
+    cur = head
+    while cur:
+        dic[cur] = Node(cur.val)
+        cur = cur.next
+    cur = head
     # 4. 构建新节点的 next 和 random 指向
-    while(curr):
-        dic[curr].next = dic.get(curr.next)
-        dic[curr].random = dic.get(curr.random)
-        curr = curr.next
+    while cur:
+        dic[cur].next = dic.get(cur.next)
+        dic[cur].random = dic.get(cur.random)
+        cur = cur.next
     # 5. 返回新链表的头节点
-    return dum.next
+    return dic[head]
+
+
 '''
 # 方法二：拼接+拆分
 # 时间复杂度 O(N) ： 三轮遍历链表，使用 O(N) 时间。

@@ -1,4 +1,5 @@
 # 翻转二叉树
+# 由于树的测试用例初始化对于刷题阶段实在耽误时间，所以本源代码不能直接运行，只能leetcode官网提交通过。
 struct TreeNode {
     int val;
     TreeNode *left;
@@ -19,5 +20,8 @@ void reverse(TreeNode* node){
 TreeNode* invertTree(TreeNode* root) {
     reverse(root);
     return root;
+
+}
+int main(){
 
 }

@@ -26,6 +26,3 @@ TreeNode* invertTree(TreeNode* root) {
     return root;
 
 }
-int main(){
-
-}

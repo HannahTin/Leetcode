@@ -22,10 +22,12 @@ struct TreeNode {
 void buildPath(TreeNode* node,string path,vector<string>& paths){ // 注意这里定义的是string path，每次都是复制赋值，不用使用引用，否则就无法做到回溯的效果。
         path+=to_string(node->val);
         if(node->left==nullptr and node->right==nullptr) paths.push_back(path);
-        else{
-            path+="->";
-            buildPath(node->left,path,paths); // 每次都是复制赋值，否则无法达到回溯的效果。
-            buildPath(node->right,path,paths);
+        if(node->left){
+            buildPath(node->left,path+"->",paths);
+        }
+         // 每次都是复制赋值，否则无法达到回溯的效果。
+        if(node->right) {
+            buildPath(node->right,path+"->",paths);
         }
 
 }

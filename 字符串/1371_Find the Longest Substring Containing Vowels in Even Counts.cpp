@@ -14,6 +14,7 @@
 // 状态压缩就是将5个元音字母出现次数的奇偶性视为一种状态，一共有32种状态，不妨使用一个整数代表状态：第一位为1表示a出现奇数次，第1位为1表示e出现奇数次。。。
 // 以此类推，仅有状态0符合题意。如果子串[0,i]和[0,j]的状态相同，那么子串[i,j]的状态一定是0，因此可以记录每个状态第一次出现的位置，此后再出现该状态时相减即可。
 using namespace std;
+#include <iostream>
 #include <string>
 #include <vector>
 int findTheLongestSubstring(string s) {
@@ -44,3 +45,9 @@ int findTheLongestSubstring(string s) {
 
 
     }
+
+int main(){
+        cout<<findTheLongestSubstring("leetcodeisgreat")<<endl; // leetc 5
+         cout<<findTheLongestSubstring("eleetminicoworoep")<<endl; // leetminic 13
+
+}

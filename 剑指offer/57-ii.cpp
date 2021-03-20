@@ -12,7 +12,7 @@
 **/
 
 // 和57题一样同样采用双指针法。
-#include <iostream>
+
 #include <vector>
 using namespace std;
 

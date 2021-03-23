@@ -18,7 +18,6 @@ def firstMissingPositive(nums: list) -> int:
         for i in range(n):
             if(nums[i]!=i+1):
                 return i+1
-                break
         return n+1
 
 print(firstMissingPositive([1,2,0]))
@@ -26,7 +25,7 @@ print(firstMissingPositive([1,2,0]))
 # 我们对数组进行遍历，对于遍历到的数 x，如果它在 [1,N] 的范围内，那么就将数组中的第 x−1 个位置（注意：数组下标从 0 开始）打上「标记」。
 # 在遍历结束之后，如果所有的位置都被打上了标记，那么答案是 N+1，否则答案是最小的没有打上标记的位置加 1。
 
-def firstMissingPositive(nums: list) -> int:
+def firstMissingPositive_2(nums: list) -> int:
     n = len(nums)
     for i in range(n):
         if(nums[i]<=0):

@@ -30,6 +30,8 @@ struct TreeNode {
     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
    TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
 };
+// 时间复杂度：O（H），H是树的高度，寻找目标节点最坏情况需要O（H），删除操作最坏情况也需要O（H）；
+// 空间复杂度：O（H），递归栈的深度最坏情况为树的高度；
 class Solution {
 public:
     TreeNode* deleteNode(TreeNode* root, int key) 

@@ -12,8 +12,6 @@ struct TreeNode {
    TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
 };
 class Solution {
-private:
-    TreeNode* parent;
 public:
     TreeNode* insertIntoBST(TreeNode* root, int val) {
         if (root == nullptr) {

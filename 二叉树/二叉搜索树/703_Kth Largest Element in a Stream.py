@@ -9,6 +9,13 @@ int add(int val) 将 val 插入数据流 nums 后，返回当前数据流中第 
 '''
 import heapq
 # 维护一个小根堆
+# 时间复杂度：
+# 初始化时间复杂度为：O(nlogk) ，其中 n 为初始化时 nums 的长度；
+
+# 单次插入时间复杂度为：O(logk)。
+
+# 空间复杂度：O(k)。需要使用优先队列存储前 k 大的元素
+
 class KthLargest:
 
     def __init__(self, k: int, nums: list):

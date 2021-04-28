@@ -12,7 +12,7 @@
 链接：https://leetcode-cn.com/problems/count-number-of-nice-subarrays
 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
 '''
-# 同样采用前缀和技巧，只不过保存的是奇数的个数。
+# 同样采用前缀和技巧，哈希表中保存的是奇数的个数。
 class Solution:
     def numberOfSubarrays(self, nums: list, k: int) -> int:
         dic ={0:1}

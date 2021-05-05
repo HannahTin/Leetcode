@@ -4,6 +4,7 @@
 // 输出：["((()))","(()())","(())()","()(())","()()()"]
 #include <vector>
 #include <string>
+#include <queue>
 using namespace std;
 class Solution {
 private:
@@ -32,5 +33,42 @@ public:
         string str ="";
         dfs(str,n,n);
         return res;
+    }
+};
+//BFS
+class Solution {
+public:
+class Node{
+            
+        public:
+            string str;
+            int left,right;
+            Node(string str,int left,int right){
+                this->str = str;
+                this->left = left;
+                this->right = right;
+            }
+    };
+    vector<string> generateParenthesis(int n) {
+        vector<string> res;
+        if(n==0) return res;
+        queue<Node*> que;
+        que.push(new Node("",n,n));
+        while(!que.empty()){
+            Node* node = que.front();
+            que.pop();
+            if(node->left ==0 && node->right==0) res.push_back(node->str);
+            if(node->left>0){
+                que.push(new Node(node->str+"(",node->left-1,node->right));
+            }
+            if(node->right>0 && node->left<node->right){
+                que.push(new Node(node->str+")",node->left,node->right-1));
+            }
+            
+
+        }
+        return res;
+        
+
     }
 };

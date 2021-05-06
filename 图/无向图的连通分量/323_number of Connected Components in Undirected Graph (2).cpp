@@ -1,0 +1,59 @@
+/**
+无向图中连通分量的数目
+给定编号从 0 到 n-1 的 n 个节点和一个无向边列表（每条边都是一对节点），请编写一个函数来计算无向图中连通分量的数目。
+输入: n = 5 和 edges = [[0, 1], [1, 2], [3, 4]]
+
+     0          3
+     |          |
+     1 --- 2    4 
+
+输出: 2
+
+来源：力扣（LeetCode）
+链接：https://leetcode-cn.com/problems/number-of-connected-components-in-an-undirected-graph
+著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
+**/
+using namespace std;
+#include <algorithm> 
+#include <queue>
+#include <unordered_set>
+#include <vector>
+// BFS解法
+class Solution {
+private:
+    vector<bool> visited;
+    void bfs(vector<unordered_set<int>>& graph,int src){
+        queue<int> que{{src}};
+        while(!que.empty()){
+            auto cur = que.front();
+            que.pop();
+            if(visited[cur] == true) continue;
+            visited[cur] = true;
+            for (const auto& neighbor : graph[cur]) {
+                       que.push(neighbor);
+             }
+        }
+
+    }
+public:
+    int countComponents(int n, vector<vector<int>>& edges) {
+        vector<unordered_set<int>> graph(n);
+        visited = vector<bool>(n, false);
+        for(const auto& e:edges){
+            graph[e[0]].insert(e[1]);
+            graph[e[1]].insert(e[0]);
+        }
+        int count = 0;
+        for(int i = 0;i<n;i++){
+            if(!visited[i]){
+                count ++;
+                bfs(graph,i);
+            }
+        }
+        return count;
+
+
+        
+
+    }
+};

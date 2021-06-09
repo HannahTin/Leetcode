@@ -16,7 +16,7 @@ int move(String direction) 返回蛇在方向 direction 上移动后的得分。
 '''
 class SnakeGame:
 
-    def __init__(self, width: int, height: int, food: List[List[int]]):
+    def __init__(self, width: int, height: int, food: list):
         """
         Initialize your data structure here.
         @param width - screen width

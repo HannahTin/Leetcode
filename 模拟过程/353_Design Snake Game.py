@@ -14,6 +14,8 @@
 SnakeGame(int width, int height, int[][] food) 初始化对象，屏幕大小为 height x width ，食物位置序列为 food
 int move(String direction) 返回蛇在方向 direction 上移动后的得分。如果游戏结束，返回 -1 。
 '''
+# 参考https://leetcode-cn.com/problems/design-snake-game/solution/c-python3-mo-ni-python3you-da-keng-huan-zua1p/
+# 注意python的深拷贝和浅拷贝
 class SnakeGame:
 
     def __init__(self, width: int, height: int, food: list):
@@ -38,9 +40,10 @@ class SnakeGame:
         @return The game's score after the move. Return -1 if game over. 
         Game over when snake crosses the screen boundary or bites its body.
         """
-        nxt_head = self.snake[0][:]   
-        # tail = self.snake.pop(-1)   #此时先按照蛇往前走了一步，还没吃东西
-        tail = self.snake.pop(-1)
+        
+        ########大坑在此！！！！！！！！！！！！！！！！！！！！！！！！！！！！
+        nxt_head = self.snake[0][:]    
+        tail = self.snake.pop(-1)[:]   #此时先按照蛇往前走了一步，还没吃东西
         if direction == "U":
             nxt_head[0] -= 1
         elif direction == "D":

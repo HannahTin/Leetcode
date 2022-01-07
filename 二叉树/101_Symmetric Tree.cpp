@@ -1,5 +1,5 @@
 // 给定一个二叉树，检查它是否是镜像对称的。
-
+// 本质是判断根节点的左右子树是否互相翻转。
 using namespace std;
 #include <vector>
 #include <algorithm> 

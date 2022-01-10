@@ -39,7 +39,7 @@ bool isBalanced(TreeNode* root) {
 }
 // 这里迭代就不能直接用层序遍历求解了，因为层序是从上到下一层层计算。我们可以先前序遍历每一个节点的左右子树是不是balanced，
 // 求解每个节点的左右子树的高度时候呢，就可以按照以该节点为根节点的树的最大深度来做，这时候就可以快乐的层序遍历了。
-int getHeight(TreeNode* node ){
+int getMaxiMumDepth(TreeNode* node ){
     if(node==nullptr) return 0;
     queue<TreeNode*> que;
     que.push(node);
@@ -64,7 +64,7 @@ bool isBalanced(TreeNode* root) {
     while(!st.empty()){
         TreeNode* node = st.top();
         st.pop();
-        if(abs(getHeight(node->left)-getHeight(node->right))>1) return false;
+        if(abs(getMaxiMumDepth(node->left)-getMaxiMumDepth(node->right))>1) return false;
         if(node->left) st.push(node->left);
         if(node->right) st.push(node->right);
     }

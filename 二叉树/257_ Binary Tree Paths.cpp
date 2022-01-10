@@ -19,6 +19,43 @@ struct TreeNode {
     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
  };
  // 回溯法（递归和回溯就是一家的，回溯和递归是一一对应的，有一个递归就要有一个回溯
+ class Solution {
+public:
+    void traversal(TreeNode* cur,vector<int>& path,vector<string>& result){
+        path.push_back(cur->val);
+        if(cur->left ==nullptr and cur->right==nullptr){
+            string sPath;
+            for(int i=0;i<path.size()-1;i++){
+                sPath += to_string(path[i]);
+                sPath += "->";
+            } 
+            sPath+= to_string(path[path.size()-1]);
+            result.push_back(sPath);
+            return;
+
+        }
+        if(cur->left){
+            traversal(cur->left,path,result);
+            path.pop_back();
+        } 
+        if(cur->right){
+            traversal(cur->right,path,result);
+            path.pop_back();
+        }
+
+
+    }
+    vector<string> binaryTreePaths(TreeNode* root) {
+        vector<string> res;
+        vector<int> path;
+        if(root==nullptr) return res;
+        traversal(root,path,res);
+        return res;
+
+
+    }
+};
+// 采用string隐含式回溯
 void buildPath(TreeNode* node,string path,vector<string>& paths){ // 注意这里定义的是string path，每次都是复制赋值，不用使用引用，否则就无法做到回溯的效果。
         path+=to_string(node->val);
         if(node->left==nullptr and node->right==nullptr) paths.push_back(path);

@@ -36,7 +36,6 @@ public:
     vector<vector<int>> pathSum(TreeNode* root, int targetSum) {
         if(root==nullptr) return res;
         myPath(root,{},targetSum);
-        return res;
-
+        return res;     
     }
 };

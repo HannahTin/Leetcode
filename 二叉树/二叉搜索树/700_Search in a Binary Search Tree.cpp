@@ -15,12 +15,22 @@ struct TreeNode {
     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
 };
 // 递归方法
-TreeNode* searchBST(TreeNode* root, int val) {
-    if (root == nullptr) return nullptr;
-    if (root->val > val) return searchBST(root->left, val);// 找到了就返回
-    else if (root->val < val) return searchBST(root->right, val);
-    else return root;
-}
+class Solution {
+private:
+    int val;
+    TreeNode* traversal(TreeNode* node){
+        if(node==nullptr) return nullptr;
+        if(node->val<val) return traversal(node->right);
+        else if(val<node->val) return traversal(node->left);
+        else return node;
+    }
+public:
+    TreeNode* searchBST(TreeNode* root, int val) {
+        if(root==nullptr) return root;
+        this->val = val;
+        return traversal(root);
+    }
+};
 
 /**
 迭代方法

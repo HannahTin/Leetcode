@@ -48,7 +48,7 @@ public:
     bool isSubtree(TreeNode* root, TreeNode* subRoot) {
         if (root == NULL && subRoot == NULL) return true;
         else if (root == NULL && subRoot != NULL) return false;
-        return isSametree(root, subRoot) || isSubtree(root->left, subRoot) || isSametree(root->right, subRoot);
+        return isSametree(root, subRoot) || isSubtree(root->left, subRoot) || isSubtree(root->right, subRoot);
             
 
 

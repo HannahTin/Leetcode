@@ -46,7 +46,7 @@ public:
 
     }
 };
-// 递归：
+// 递归
 class Solution2 {
 private:
     long long maxVal = LONG_MIN;

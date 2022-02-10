@@ -23,7 +23,7 @@
 # 在遍历的过程中，如果 最远可以到达的位置 大于等于数组中的最后一个位置，那就说明最后一个位置可达，我们就可以直接返回 True 作为答案。反之，如果在遍历结束后，最后一个位置仍然不可达，我们就返回 False 作为答案。
 
 class Solution:
-    def canJump(self, nums: List[int]) -> bool:
+    def canJump(self, nums: list) -> bool:
         n = len(nums)
         rightmost = 0
         for i in range(n):

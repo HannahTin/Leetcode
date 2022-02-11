@@ -26,7 +26,7 @@ n 个孩子站成一排。给你一个整数数组 ratings 表示每个孩子的
 
 
 class Solution:
-    def candy(self, ratings: List[int]) -> int:
+    def candy(self, ratings: list) -> int:
         n = len(ratings)
         left =[1]*n
         for i in range(n):

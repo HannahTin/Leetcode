@@ -18,6 +18,7 @@
 输出：23
 
 '''
+import sys
 # 暴力:lc 会超时
 class Solution:
     def maxSubArray(self, nums: list) -> int:
@@ -34,7 +35,7 @@ class Solution:
     def maxSubArray(self, nums: list) -> int:
         n = len(nums)
         ans = 0
-        res = float('-inf')
+        res = -sys.maxsize-1
         for i in range(n):
             ans += nums[i]
             res = max(res,ans)

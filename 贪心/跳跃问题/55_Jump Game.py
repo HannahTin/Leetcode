@@ -32,3 +32,8 @@ class Solution:
                 rightmost = max(rightmost,i+nums[i])
                 if rightmost>=n-1: return True
         return False
+# 这个问题就转化为跳跃覆盖范围究竟可不可以覆盖到终点！
+
+# 每次移动取最大跳跃步数（得到最大的覆盖范围），每移动一个单位，就更新最大覆盖范围。
+
+# 贪心算法局部最优解：每次取最大跳跃步数（取最大覆盖范围），整体最优解：最后得到整体最大覆盖范围，看是否能到终点。

@@ -32,6 +32,11 @@ class Solution:
                 res = max(res,ans)
      
 # 贪心
+# 局部最优：当前“连续和”为负数的时候立刻放弃，从下一个元素重新计算“连续和”，因为负数加上下一个元素 “连续和”只会越来越小。
+
+# 全局最优：选取最大“连续和”
+
+# 局部最优的情况下，并记录最大的“连续和”，可以推出全局最优。
 class Solution:
     def maxSubArray(self, nums: list) -> int:
         n = len(nums)

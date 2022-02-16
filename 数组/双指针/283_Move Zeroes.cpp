@@ -27,7 +27,7 @@ using namespace std;
 // 左指针左边均为非零数；
 // 右指针左边直到左指针处均为零。
 // 因此每次交换，都是将左指针的零与右指针的非零数交换，且非零数的相对顺序并未改变。
-
+// 和27题移除元素很像
 class Solution {
 public:
     void moveZeroes(vector<int>& nums) {

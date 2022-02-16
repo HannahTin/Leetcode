@@ -11,6 +11,7 @@
 来源：力扣（LeetCode）
 链接：https://leetcode-cn.com/problems/remove-element
 """
+# 和移动零这题很像
 def removeElement(nums, val):
         """
         :type nums: List[int]

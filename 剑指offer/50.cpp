@@ -26,3 +26,17 @@ int main(){
     cout<<firstUniqChar("abaccdeff") ; // b
 
 }
+// class Solution {
+// public:
+//     char firstUniqChar(string s) {
+//         vector<int> v(26);
+//         for (int i = 0; i < s.size(); ++i) {
+//             v[s[i] - 'a']++;
+//         }
+//         for (int i = 0; i < s.size(); ++i) {
+//             if (v[s[i] - 'a'] == 1)
+//                 return s[i];
+//         }
+//         return ' ';
+//     }
+// };

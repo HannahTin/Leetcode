@@ -37,31 +37,32 @@ def copyRandomList(head: 'Node') -> 'Node':
 # 方法二：拼接+拆分
 # 时间复杂度 O(N) ： 三轮遍历链表，使用 O(N) 时间。
 # 空间复杂度 O(1) ： 节点引用变量使用常数大小的额外空间。
-def copyRandomList(head: 'Node') -> 'Node':
-    if not head: return None
-    curr = head
-    # 1. 复制各节点，并构建拼接链表
-    while curr:
-        node = Node(curr.next)
-        node.next = curr.next
-        curr.next = node
-        curr = node.next
-    # 2. 构建各新节点的 random 指向
-    curr = head
-    while curr:
-        if curr.random:
-            curr.next.random = curr.random.next
-        curr = curr.next.next
-    # 3. 拆分两链表
-    old = head
-    new_head = new= head.next
-    while new.next:
-        old.next = old.next.next
-        new.next = new.next.next
-        old = old.next
-        new = new.next
-    old.next = None
-    return new_head
+class Solution:
+    def copyRandomList(self, head: 'Node') -> 'Node':
+        if not head: return None
+        curr = head
+        # 1. 复制各节点，并构建拼接链表
+        while curr:
+            node = Node(curr.val)
+            node.next = curr.next
+            curr.next = node
+            curr = node.next
+        # 2. 构建各新节点的 random 指向
+        curr = head
+        while curr:
+            if curr.random:
+                curr.next.random = curr.random.next
+            curr = curr.next.next
+        # 3. 拆分两链表
+        old = head
+        new_head = new= head.next
+        while new.next:
+            old.next = old.next.next
+            new.next = new.next.next
+            old = old.next
+            new = new.next
+        old.next = None
+        return new_head
    
 
 

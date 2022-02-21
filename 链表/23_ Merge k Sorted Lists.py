@@ -3,6 +3,10 @@
 
 请你将所有链表合并到一个升序链表中，返回合并后的链表。
 '''
+class ListNode(object):
+    def __init__(self, x):
+        self.val = x
+        self.next = None
 # 解题思路：同样将k个链表的合并在同一个节点数组中，利用数组排序方法进行排序，然后再各节点串联。
 # 时间复杂度为O(kn+knlogkn)，空间复杂度为o(kn)
 def mergeKLists(lists):
@@ -53,3 +57,58 @@ def mergeKLists(lists: List[ListNode]) -> ListNode:
 
 # 解题思路：可以参见合并两个有序链表，数组中的分治归并
 # 另外，还可以设置优先队列保存k个链表的第一个节点
+import heapq
+class Solution:
+    def mergeKLists(self, lists: List[ListNode]) -> ListNode:
+        def __lt__(self,other):
+            return self.val < other.val
+        ListNode.__lt__ = __lt__
+        heap = []
+        for i in lists:
+            if i :heapq.heappush(heap,i)
+        d = c = ListNode(-1)
+        while heap:
+            n = heapq.heappop(heap)
+            c.next = n
+            c = c.next
+            n = n.next
+            if n:heapq.heappush(heap,n)
+        return d.next
+
+'''
+C++中的堆
+struct ListNode {
+     int val;
+     ListNode *next;
+     ListNode() : val(0), next(nullptr) {}
+     ListNode(int x) : val(x), next(nullptr) {}
+     ListNode(int x, ListNode *next) : val(x), next(next) {}
+ };
+
+class Solution {
+public:
+    struct Status {
+        int val;
+        ListNode *ptr;
+        bool operator < (const Status &rhs) const {
+            return val > rhs.val;
+        }
+    };
+
+    priority_queue <Status> q;
+
+    ListNode* mergeKLists(vector<ListNode*>& lists) {
+        for (auto node: lists) {
+            if (node) q.push({node->val, node});
+        }
+        ListNode head, *tail = &head;
+        while (!q.empty()) {
+            auto f = q.top(); q.pop();
+            tail->next = f.ptr; 
+            tail = tail->next;
+            if (f.ptr->next) q.push({f.ptr->next->val, f.ptr->next});
+        }
+        return head.next;
+    }
+};
+'''

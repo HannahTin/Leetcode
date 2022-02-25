@@ -11,6 +11,13 @@ int add(int val) 将 val 插入数据流 nums 后，返回当前数据流中第 
 using namespace std;
 #include <queue>
 #include <vector>
+// 求排序后的第 k 大元素，也就是求最大的k个数中最小的那个。由此我们可以使用一个大小为k的小根堆来保存给定数组中最大的k个数，这样堆顶就是我们所求的元素。
+
+// 为什么大小为k的小根堆中保存的是给定数组中最大的k个数？
+
+// 因为数组中的元素不断插入堆的过程中，若堆已满，则弹出堆顶元素即最小的元素，所以再不断重复此操作后，小的元素都被弹出，剩下的就是给定数组中最大的k个数。
+
+
 class KthLargest {
 private:
     priority_queue<int, vector<int>, greater<int>> que;

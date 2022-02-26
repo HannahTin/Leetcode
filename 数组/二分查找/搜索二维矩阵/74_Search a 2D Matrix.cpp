@@ -19,6 +19,7 @@ public:
         while(left<right){
             middle = left+(right-left)/2;
             if(target==matrix[middle][0]) return true;
+            // 比当前行第一个数字大，可能在当前行，也可能在下一行，因此先检查是否在当前行
             else if(target>matrix[middle][0] and target<= matrix[middle][col-1]) break;
             else if(target<matrix[middle][0]) right=middle;
             else left = middle+1; 

@@ -21,6 +21,7 @@ rose -> ros (删除 'e')
 using namespace std;
 #include <vector>
 #include <string>
+#include <algorithm>
 // 解决两个字符串的动态规划问题，一般都是用两个指针 i,j 分别指向两个字符串的最后，然后一步步往前走，缩小问题的规模。
 /** 
 if s1[i] == s2[j]:
@@ -44,7 +45,7 @@ public:
                     dp[i][j] = dp[i - 1][j - 1];
                 }
                 else {
-                    dp[i][j] = min({dp[i - 1][j - 1], dp[i - 1][j], dp[i][j - 1]}) + 1;
+                    dp[i][j] = min(dp[i - 1][j - 1], dp[i - 1][j], dp[i][j - 1]) + 1;
                 }
             }
         }

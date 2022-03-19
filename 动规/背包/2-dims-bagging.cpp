@@ -9,10 +9,10 @@ int two_dims_bagging(vector<int>& weights,vector<int>& value,int& bagweight){
         dp[0][j] = dp[0][j-weights[0]]+value[0];
     }
     // 开始利用递归公式遍历了！
-    for(int i = 1;i<weights.size();i++){
-        for (int j =0;j<=bagweight;j++){
-            if(j<weights[i]) dp[i][j] = dp[i-1][j];
-            else dp[i][j] = max(dp[i-1][j],dp[i-1][j-weights[i]]+value[i]);
+    for(int i = 1;i<weights.size();i++){ //遍历物品
+        for (int j =0;j<=bagweight;j++){ //遍历背包
+            if(j<weights[i]) dp[i][j] = dp[i-1][j]; //肯定不能放
+            else dp[i][j] = max(dp[i-1][j],dp[i-1][j-weights[i]]+value[i]);//不取物品i和取物品i
         }
     }
     return dp[weights.size()-1][bagweight];

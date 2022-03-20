@@ -15,24 +15,24 @@
 */
 using namespace std;
 #include<vector>
-// 我们考虑数组中的最后一个元素 xx：在最小值右侧的元素（不包括最后一个元素本身），
+// 我们考虑数组中的最后一个元素 x：在最小值右侧的元素（不包括最后一个元素本身），
 // 它们的值一定都严格小于 x；而在最小值左侧的元素，它们的值一定都严格大于 x。
 // 因此，我们可以根据这一条性质，通过二分查找的方法找出最小值。
 // 参考https://leetcode-cn.com/problems/find-minimum-in-rotated-sorted-array/solution/xun-zhao-xuan-zhuan-pai-xu-shu-zu-zhong-5irwp/
 class Solution {
 public:
     int findMin(vector<int>& nums) {
-        int low = 0;
-        int high = nums.size() - 1;
-        while (low <= high) {
-            int pivot = low + (high - low) / 2;
-            if (nums[pivot] < nums[high]) {
-                high = pivot;
-            }
-            else {
-                low = pivot + 1;
+        int left =0,right = nums.size()-1;
+        while(left<=right){
+            int mid = left +(right-left)/2;
+            if(nums[mid]>nums[right]){
+                left = mid+1;
+            }else if(nums[mid]<nums[right]){
+                right =mid;
+            }else{
+                break;
             }
         }
-        return nums[low-1];
+        return nums[left];
     }
 };
